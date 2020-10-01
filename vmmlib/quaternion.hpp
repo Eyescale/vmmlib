@@ -58,6 +58,9 @@ public:
     }
     Quaternion(T x, T y, T z, T w);
 
+    /** Copy constructor for quaternion */
+    Quaternion(const Quaternion& other);
+
     /** Construct a rotation quaternion */
     Quaternion(T angle, vector<3, T> axis);
 
@@ -177,6 +180,12 @@ Quaternion<T>::Quaternion(T x_, T y_, T z_, T w_)
     array[1] = y_;
     array[2] = z_;
     array[3] = w_;
+}
+
+template <typename T>
+Quaternion<T>::Quaternion(const Quaternion& other)
+{
+    ::memcpy(array, other.array, 4 * sizeof(T));
 }
 
 template <typename T>
