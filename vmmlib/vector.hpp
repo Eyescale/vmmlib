@@ -65,6 +65,7 @@ public:
     {
     }                            // http://stackoverflow.com/questions/5602030
     explicit vector(const T& a); // sets all components to a;
+    vector(const vector& other);
     vector(const T& x, const T& y);
     vector(const T& x, const T& y, const T& z);
     vector(const T& x, const T& y, const T& z, const T& w);
@@ -391,6 +392,12 @@ vector<M, T>::vector(const T& _a)
     {
         *it = _a;
     }
+}
+
+template <size_t M, typename T>
+vector<M, T>::vector(const vector<M, T>& other)
+{
+    memcpy(array, other.array, M * sizeof(T));
 }
 
 template <size_t M, typename T>
