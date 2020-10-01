@@ -72,6 +72,11 @@ public:
 
     /**
      * Copy-construct a matrix.
+     */
+    Matrix(const Matrix<R, C, T>& source);
+
+    /**
+     * Copy-construct a matrix.
      * Missing data is zero-initialized. Additional data is ignored.
      */
     template <size_t P, size_t Q>
@@ -504,6 +509,12 @@ template <size_t R, size_t C, typename T>
 Matrix<R, C, T>::Matrix(const std::vector<T>& values)
 {
     *this = values;
+}
+
+template <size_t R, size_t C, typename T>
+Matrix<R, C, T>::Matrix(const Matrix<R, C, T>& source)
+{
+    *this = source;
 }
 
 template <size_t R, size_t C, typename T>
